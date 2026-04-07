@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vu Thi Nhat Ha — Product Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #0a0a12;
+  --bg2: #12121c;
+  --surface: #16161f;
+  --border: rgba(255,255,255,0.07);
+  --text: #eeeef2;
+  --muted: #7c7c90;
+  --subtle: rgba(255,255,255,0.03);
+  --accent: #e85d3a;
+  --accent2: #4a9ead;
+  --accent3: #d4a853;
+  --accent-light: rgba(232,93,58,0.12);
+  --accent2-light: rgba(74,158,173,0.12);
+  --gradient1: linear-gradient(135deg, #e85d3a, #d4a853);
+  --gradient2: linear-gradient(135deg, #4a9ead, #6bc5d2);
+  --radius: 20px;
+  --radius-sm: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lexend', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: .5;
+}
+section, nav, footer { position: relative; z-index: 1; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 48px;
+  background: rgba(10,10,18,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; font-size: 18px; color: var(--text);
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  text-decoration: none; color: var(--muted); font-size: 13px;
+  font-weight: 500; letter-spacing: .5px; text-transform: uppercase;
+  transition: color .2s; position: relative;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--accent); transform: scaleX(0);
+  transition: transform .3s; transform-origin: left;
+}
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* LAYOUT */
+section { position: relative; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+/* HERO */
+#hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 140px 0 100px; position: relative;
+}
+#hero::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,93,58,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 600; color: var(--accent);
+  letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 40px; height: 2px; background: var(--accent);
+}
+.hero-bio {
+  font-size: 18px; color: var(--muted); max-width: 600px;
+  line-height: 1.8; margin-bottom: 40px; font-weight: 300;
+}
+.hero-skills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+.skill-tag {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 100px; padding: 8px 18px;
+  font-size: 13px; color: var(--muted); font-weight: 500;
+  transition: all .2s;
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  border-radius: 100px; padding: 12px 28px; transition: all .25s;
+}
+.btn-primary {
+  background: var(--accent); color: #fff; border: 2px solid var(--accent);
+}
+.btn-primary:hover { background: #9a7a48; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(176,141,87,0.25); }
+.btn-ghost {
+  background: transparent; color: var(--muted); border: 2px solid var(--border);
+}
+.btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+/* SECTION HEADERS */
+.sec-eyebrow {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 2.5px;
+  font-weight: 700; margin-bottom: 8px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+}
+.sec-desc { font-size: 16px; color: var(--muted); max-width: 560px; line-height: 1.7; font-weight: 300; }
+
+/* PROJECT CARDS */
+#projects { padding: 100px 0; }
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px 32px;
+  text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; gap: 16px;
+  transition: transform .3s, box-shadow .3s;
+  position: relative; overflow: hidden;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+.project-card::after {
+  content: '→'; position: absolute; top: 32px; right: 32px;
+  font-size: 20px; color: var(--muted); transition: all .3s;
+  opacity: 0; transform: translateX(-8px);
+}
+.project-card:hover::after { opacity: 1; transform: translateX(0); }
+.pc-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 100px; padding: 5px 14px;
+  font-size: 11px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; width: fit-content;
+}
+.pc-badge.art { background: var(--accent-light); color: var(--accent); }
+.pc-badge.vga { background: var(--accent2-light); color: var(--accent2); }
+.pc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700;
+}
+.pc-desc { font-size: 14px; color: var(--muted); line-height: 1.65; flex: 1; }
+.pc-stats { display: flex; gap: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+.pc-stat { display: flex; flex-direction: column; gap: 2px; }
+.pc-stat-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; }
+.pc-stat-val.art { color: var(--accent); }
+.pc-stat-val.vga { color: var(--accent2); }
+.pc-stat-lbl { font-size: 11px; color: var(--muted); font-weight: 500; }
+.pc-time { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+/* DIVIDER */
+.divider { height: 1px; background: var(--border); }
+
+/* CASE STUDY */
+.case-section { padding: 100px 0; }
+.cs-banner {
+  border-radius: var(--radius); padding: 56px 48px;
+  position: relative; overflow: hidden; margin-bottom: 72px;
+}
+.cs-banner.art { background: linear-gradient(135deg, rgba(176,141,87,.06) 0%, rgba(201,179,126,.04) 100%); border: 1px solid rgba(176,141,87,.15); }
+.cs-banner.vga { background: linear-gradient(135deg, rgba(122,139,154,.06) 0%, rgba(155,170,184,.04) 100%); border: 1px solid rgba(122,139,154,.15); }
+.cs-tag {
+  display: inline-block; border-radius: 100px; padding: 5px 16px;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  text-transform: uppercase; margin-bottom: 20px;
+}
+.cs-tag.art { background: var(--accent-light); color: var(--accent); }
+.cs-tag.vga { background: var(--accent2-light); color: var(--accent2); }
+.cs-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800; line-height: 1.1; margin-bottom: 16px;
+}
+.cs-banner p { font-size: 16px; color: var(--muted); max-width: 600px; line-height: 1.7; margin-bottom: 32px; font-weight: 300; }
+.cs-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+.cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+.cs-meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 700; }
+.cs-meta-value { font-size: 14px; font-weight: 600; }
+
+/* BLOCKS */
+.cs-block { margin-bottom: 64px; }
+.block-label { font-size: 11px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; margin-bottom: 8px; }
+.block-label.art { color: var(--accent); }
+.block-label.vga { color: var(--accent2); }
+.cs-block h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700; margin-bottom: 16px;
+}
+.cs-block p { font-size: 15px; color: var(--muted); line-height: 1.8; font-weight: 300; margin-bottom: 12px; }
+.cs-block p strong { color: var(--text); font-weight: 600; }
+
+/* GRIDS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+
+/* STAT CARDS */
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px 20px;
+  text-align: center; transition: transform .3s;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px; font-weight: 700; display: block; margin-bottom: 4px;
+}
+.stat-num.art { color: var(--accent); }
+.stat-num.vga { color: var(--accent2); }
+.stat-lbl { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+/* INFO CARDS */
+.info-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 28px 24px;
+  transition: transform .3s;
+}
+.info-card:hover { transform: translateY(-3px); }
+.info-icon { font-size: 24px; margin-bottom: 14px; }
+.info-card h4 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.info-card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 0; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 48px; }
+.timeline::before {
+  content: ''; position: absolute; left: 18px; top: 0; bottom: 0; width: 2px;
+}
+.timeline.art::before { background: linear-gradient(to bottom, var(--accent), var(--accent3), transparent); }
+.timeline.vga::before { background: linear-gradient(to bottom, var(--accent2), #9baab8, transparent); }
+.tl-item { margin-bottom: 48px; position: relative; }
+.tl-dot {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--surface); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; position: absolute; left: -48px; top: 0; z-index: 1;
+}
+.tl-phase { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px; }
+.tl-phase.art { color: var(--accent); }
+.tl-phase.vga { color: var(--accent2); }
+.tl-item h4 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.tl-item > p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; font-weight: 300; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { border-radius: 100px; padding: 4px 12px; font-size: 11px; font-weight: 600; }
+.tag.art { background: var(--accent-light); color: var(--accent); }
+.tag.vga { background: var(--accent2-light); color: var(--accent2); }
+
+/* IMAGE CAROUSEL */
+.carousel-wrap { position: relative; margin: 20px 0; }
+.carousel {
+  display: flex; gap: 12px; overflow-x: auto;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0 16px;
+  scrollbar-width: none;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.carousel img {
+  flex-shrink: 0; border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  scroll-snap-align: start;
+  object-fit: cover;
+  transition: transform .3s;
+  cursor: grab;
+}
+.carousel img:hover { transform: scale(1.02); }
+.carousel img:active { cursor: grabbing; }
+.carousel-nav {
+  display: flex; gap: 8px; justify-content: center;
+  margin-top: 8px;
+}
+.carousel-btn {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: 16px; cursor: pointer; transition: all .2s;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+}
+.carousel-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* HIGHLIGHT CARD */
+.highlight-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+}
+.hc-row {
+  display: flex; gap: 20px; padding: 16px 0;
+  border-bottom: 1px solid var(--border); align-items: flex-start;
+}
+.hc-row:last-child { border-bottom: none; }
+.hc-badge {
+  border-radius: 8px; padding: 5px 12px;
+  font-size: 10px; font-weight: 800; letter-spacing: 1px;
+  text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
+}
+.hc-badge.art { background: var(--accent-light); color: var(--accent); }
+.hc-badge.vga { background: var(--accent2-light); color: var(--accent2); }
+.hc-text { font-size: 14px; color: var(--muted); line-height: 1.65; }
+.hc-text strong { color: var(--text); font-weight: 600; }
+
+/* OUTCOME BANNER */
+.outcome-banner {
+  border-radius: var(--radius); padding: 48px 40px;
+  text-align: center; background: var(--surface); border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.outcome-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 12px;
+}
+.outcome-banner p { font-size: 15px; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.7; font-weight: 300; }
+
+/* RECOGNITION */
+.recog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.recog-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px;
+  display: flex; gap: 16px; transition: transform .3s;
+}
+.recog-card:hover { transform: translateY(-3px); }
+.recog-icon { font-size: 24px; flex-shrink: 0; }
+.recog-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.recog-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* LEARNINGS */
+.learn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.learn-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 32px 28px;
+  transition: transform .3s;
+}
+.learn-card:hover { transform: translateY(-3px); }
+.learn-num { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; display: block; margin-bottom: 12px; }
+.learn-num.art { color: var(--accent); }
+.learn-num.vga { color: var(--accent2); }
+.learn-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.learn-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* FOOTER */
+footer {
+  background: #06060a; color: rgba(255,255,255,0.5);
+  padding: 80px 0 40px; text-align: center;
+}
+.footer-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 6px;
+}
+.footer-role { font-size: 14px; margin-bottom: 32px; }
+.footer-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+.footer-btns a {
+  text-decoration: none; color: rgba(255,255,255,0.6);
+  font-size: 13px; font-weight: 500;
+  padding: 10px 20px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,0.15); transition: all .2s;
+}
+.footer-btns a:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* FADE IN */
+.fade-in {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .container { padding: 0 20px; }
+  .project-grid, .grid-2, .recog-grid, .learn-grid { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+  .cs-banner { padding: 36px 28px; }
+  .cs-meta { gap: 20px; }
+  .pc-stats { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nhat Ha · Portfolio</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#artian">Artian</a>
+    <a href="#vga">VGA</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Product Management Executive</div>
+    <p class="hero-bio">
+      Product Management professional with 4+ years at VNG Group, specializing in AI-powered products and platform services. Proven track record translating business requirements into actionable specs, managing cross-functional Agile teams, and driving product delivery from ideation to launch.
+    </p>
+    <div class="hero-skills">
+      <span class="skill-tag">Product Strategy</span>
+      <span class="skill-tag">User Research</span>
+      <span class="skill-tag">Data-Driven Decisions</span>
+      <span class="skill-tag">Cross-functional Leadership</span>
+      <span class="skill-tag">Agile / Scrum</span>
+      <span class="skill-tag">GenAI</span>
+      <span class="skill-tag">Compliance & Regulation</span>
+      <span class="skill-tag">Platform Products</span>
+    </div>
+    <div class="hero-actions">
+      <a href="mailto:vutnhatha@gmail.com" class="btn btn-primary">📨 Get in touch</a>
+      <a href="https://www.linkedin.com/in/vutnhatha/" target="_blank" class="btn btn-ghost">🌐 LinkedIn</a>
+      <a href="tel:+84947631327" class="btn btn-ghost">📱 0947 631 327</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECT INDEX -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-eyebrow" style="color:var(--accent)">Work Experience</div>
+    <h2 class="sec-title">My Project</h2>
+    <p class="sec-desc">Two platform products at VNG Group: Generative AI creative platform — Artian, Login system & Account management — VNGGames Account.</p>
+    <div class="project-grid">
+
+      <a href="#artian" class="project-card fade-in">
+        <div class="pc-badge art">✦ Gen AI Platform</div>
+        <div class="pc-title">Artian</div>
+        <div class="pc-desc">Generative AI platform serving image, video, voiceover, comic, cosplay, and campaign creation across VNGGames studios — achieving 95.5% success rate and 60.2% adoption.</div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-val art">~40K</span><span class="pc-stat-lbl">Users served</span></div>
+          <div class="pc-stat"><span class="pc-stat-val art">95.5%</span><span class="pc-stat-lbl">Success rate</span></div>
+          <div class="pc-stat"><span class="pc-stat-val art">38</span><span class="pc-stat-lbl">Game titles</span></div>
+        </div>
+        <div class="pc-time">Product Management Executive · Jun 2023 – Jun 2025</div>
+      </a>
+
+      <a href="#vga" class="project-card fade-in">
+        <div class="pc-badge vga">⬡ Login & Account Platform</div>
+        <div class="pc-title">VNGGames Account</div>
+        <div class="pc-desc">Game login, user authentication, and account management platform ensuring compliance, SOX requirements, and regulatory standards.</div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-val vga">40%</span><span class="pc-stat-lbl">Cost savings (ZNS)</span></div>
+          <div class="pc-stat"><span class="pc-stat-val vga">New</span><span class="pc-stat-lbl">Account Center</span></div>
+          <div class="pc-stat"><span class="pc-stat-val vga">PDPL25</span><span class="pc-stat-lbl">Compliance shipped</span></div>
+        </div>
+        <div class="pc-time">Product Management Executive · Jun 2025 – Present</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASE STUDY 1: ARTIAN -->
+<section id="artian" class="case-section">
+  <div class="container">
+
+    <div class="cs-banner art fade-in">
+      <div class="cs-tag art">✦ Artian — Generative AI Platform</div>
+      <h2>Artian — Generative AI Platform</h2>
+      <p>A generative AI platform enabling image, video, voiceover, comic, cosplay, and campaign creation — serving ~40K users with ~95K requests, only 0.2% error rate, and scaling across 38 game titles.</p>
+      <div class="cs-meta">
+        <div class="cs-meta-item"><span class="cs-meta-label">Company</span><span class="cs-meta-value">VNGGames</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Timeline</span><span class="cs-meta-value">Jun 2023 – Jun 2025 (2 years)</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Split</span><span class="cs-meta-value">70% Product · 30% Project Management</span></div>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Overview</div>
+      <h3>What is Artian?</h3>
+      <div class="grid-2">
+        <div>
+          <p>Artian is a <strong>generative AI platform</strong> built at VNGGames for marketers, designers, and game studios. The platform supports image generation, video creation, voiceover, comic generation, cosplay features, and marketing campaign workflows.</p>
+          <p>As PM, I owned the <strong>full product lifecycle</strong> — gathering requirements, writing PRDs, coordinating cross-functional teams (Engineering, AI, QA, Creative, Marketing, Game Designers), and driving 80% of product decisions with concrete data sources.</p>
+        </div>
+        <div class="grid-2" style="align-content:start;">
+          <div class="stat-card"><span class="stat-num art">~40K</span><span class="stat-lbl">Users served</span></div>
+          <div class="stat-card"><span class="stat-num art">~95K</span><span class="stat-lbl">Requests processed</span></div>
+          <div class="stat-card"><span class="stat-num art">0.2%</span><span class="stat-lbl">Error rate</span></div>
+          <div class="stat-card"><span class="stat-num art">38</span><span class="stat-lbl">Game titles scaled</span></div>
+        </div>
+      </div>
+      <!-- Platform Screenshot -->
+      <div style="margin-top:28px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
+        <img src="images/artian-dashboard.jpg" alt="Artian Platform Dashboard" style="width:100%; display:block;">
+      </div>
+    </div>
+
+    <!-- Responsibilities -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">My Responsibilities</div>
+      <h3>What I Owned</h3>
+      <div class="grid-3">
+        <div class="info-card"><div class="info-icon">📋</div><h4>Requirements & PRDs</h4><p>Gathered and clarified product and business requirements from stakeholders for AI-based products. Wrote and maintained PRDs, user stories, workflows, and documentation.</p></div>
+        <div class="info-card"><div class="info-icon">📈</div><h4>Backlog & Sprint Planning</h4><p>Led backlog refinement and sprint planning to ensure smooth coordination across cross-functional teams. Supported scoping, planning, and effort estimation.</p></div>
+        <div class="info-card"><div class="info-icon">🤝</div><h4>Cross-functional Liaison</h4><p>Acted as bridge between Engineering, R&D, QA, and Creative teams. Ensured aligned development across Tech, Marketing, and Game Designer stakeholders.</p></div>
+        <div class="info-card"><div class="info-icon">🔍</div><h4>User Research & Testing</h4><p>Conducted user research with CSAT 4/5–4.67/5. Applied beta testing, prototype testing, and quality evaluation for every feature shipped.</p></div>
+        <div class="info-card"><div class="info-icon">📊</div><h4>Data-Driven Decisions</h4><p>Drove 80% of product decisions with concrete data — user behavior, error rates, operational demand, compliance. Exceeded 85% KPI target.</p></div>
+        <div class="info-card"><div class="info-icon">🏃</div><h4>Scrum Master (30%)</h4><p>Facilitated daily stand-ups, sprint planning, reviews, and retrospectives. Coordinated cross-team dependencies and removed blockers.</p></div>
+      </div>
+    </div>
+
+    <!-- Journey -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Product Journey</div>
+      <h3>Key Milestones & Achievements</h3>
+      <div class="timeline art" style="margin-top:32px;">
+
+        <div class="tl-item">
+          <div class="tl-dot">🚀</div>
+          <div class="tl-phase art">Milestone 01</div>
+          <h4>Platform Launch & Scale</h4>
+          <p>Led Artian from concept to platform — enabling image, video, voiceover, comic, cosplay, and campaign creation. Scaled to 38 game titles with 100 LoRA-trained models for 17 titles.</p>
+          <div class="tags"><span class="tag art">Stable Diffusion</span><span class="tag art">LoRA Models</span><span class="tag art">38 Game Titles</span><span class="tag art">Platform Scale</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">🎯</div>
+          <div class="tl-phase art">Milestone 02</div>
+          <h4>AI Campaigns — Driving Adoption</h4>
+          <p>Delivered 9 AI campaigns with ~95K requests and ~40K users. Completed 12K/18K (~67%) internal jobs. Achieved campaign CSAT of 4.67/5.</p>
+          <!-- Campaign Image Carousel -->
+          <div class="carousel-wrap">
+            <div class="carousel" id="carousel-campaigns">
+              <img src="images/campaign-1.jpg" alt="PUBG Mobile AI Campaign" style="height:200px;">
+              <img src="images/campaign-2.jpg" alt="AI Avatar Cosplay" style="height:200px;">
+              <img src="images/campaign-3.jpg" alt="Game Campaign" style="height:200px;">
+              <img src="images/campaign-4.jpg" alt="AI Campaign Results" style="height:200px;">
+              <img src="images/campaign-5.jpg" alt="AI Generation Output" style="height:200px;">
+            </div>
+            <div class="carousel-nav">
+              <button class="carousel-btn" onclick="scrollCarousel('carousel-campaigns',-1)">←</button>
+              <button class="carousel-btn" onclick="scrollCarousel('carousel-campaigns',1)">→</button>
+            </div>
+          </div>
+          <div class="tags"><span class="tag art">9 Campaigns</span><span class="tag art">~95K Requests</span><span class="tag art">CSAT 4.67/5</span><span class="tag art">Internal Adoption</span></div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot">📊</div>
+          <div class="tl-phase art">Milestone 03</div>
+          <h4>AI Production Workflow — From Prompt to Quality Output</h4>
+          <p>Empowered marketing teams with a structured AI production workflow — transforming rough idea prompts into polished social videos, reels, and campaign visuals. Removed creative bottlenecks and gave non-technical teams direct access to AI-powered content creation.</p>
+          <p style="font-size:13px; color:var(--muted); line-height:1.8; margin-top:4px;">
+            <strong style="color:var(--text);">Step 1:</strong> Use AI Image to generate ·
+            <strong style="color:var(--text);">Step 2:</strong> Use Photoshop to edit image ·
+            <strong style="color:var(--text);">Step 3:</strong> Apply to Chill Video to generate motion
+          </p>
+          <!-- Workflow Image -->
+          <div style="margin:16px 0; border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--border);">
+            <img src="images/workflow-ai.jpg" alt="AI Production Workflow" style="width:100%; display:block;">
+          </div>
+          <p style="font-size:13px; margin-bottom:12px;"><a href="https://www.youtube.com/watch?v=Agn8QTcYn10" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:600;">▶ Watch sample video</a></p>
+          <div class="tags"><span class="tag art">AI Workflow</span><span class="tag art">Content Creation</span><span class="tag art">Marketing Enablement</span><span class="tag art">Creative Pipeline</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Strategy -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Product Strategy</div>
+      <h3>Key Decisions & Approach</h3>
+      <div class="highlight-card">
+        <div class="hc-row"><span class="hc-badge art">Data</span><div class="hc-text"><strong>Established data-driven decision framework.</strong> Every feature required defined success criteria before development — covering acceptance criteria, success rate, adoption rate, and usage metrics. This raised decision quality above 85% KPI target.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Scale</span><div class="hc-text"><strong>Scaled platform to 38 game titles</strong> with 100 LoRA-trained models for 17 titles — enabling game-specific AI generation at scale while maintaining 0.2% error rate.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Research</span><div class="hc-text"><strong>Embedded user research into every release cycle.</strong> Beta testing, prototype testing, and quality evaluation for every feature. CSAT results: AI Generation 3.45/5 quality rate, Campaign 4.67/5 overall satisfaction.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Process</span><div class="hc-text"><strong>Proposed process and product improvements</strong> based on user feedback and data analysis. Continuously iterated on both product features and team workflows.</div></div>
+      </div>
+    </div>
+
+    <!-- Outcomes -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Outcomes</div>
+      <h3>Measurable Impact</h3>
+      <div class="outcome-banner">
+        <h3>Artian became flagship AI for marketers and designers</h3>
+        <p>A multi-capability generative AI platform serving the entire game publishing pipeline — from marketing campaigns to in-game character design.</p>
+      </div>
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="stat-card"><span class="stat-num art">95.5%</span><span class="stat-lbl">Success rate</span></div>
+        <div class="stat-card"><span class="stat-num art">60.2%</span><span class="stat-lbl">Adoption rate</span></div>
+        <div class="stat-card"><span class="stat-num art">32.56%</span><span class="stat-lbl">Retention rate</span></div>
+        <div class="stat-card"><span class="stat-num art">100</span><span class="stat-lbl">LoRA models trained</span></div>
+      </div>
+      <div class="recog-grid">
+        <div class="recog-card"><div class="recog-icon">📊</div><div><div class="recog-title">80% Data-Backed Decisions</div><div class="recog-desc">Exceeded the 85% KPI target for data-driven product decisions — using user behavior, error rates, and operational metrics.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">🎯</div><div><div class="recog-title">9 AI Campaigns Delivered</div><div class="recog-desc">~95K requests, ~40K users. 12K/18K internal jobs completed (~67% completion rate).</div></div></div>
+        <div class="recog-card"><div class="recog-icon">⭐</div><div><div class="recog-title">CSAT 4/5 – 4.67/5</div><div class="recog-desc">Campaign satisfaction reached 4.67/5. AI generation quality rate at 3.45/5 — identified as area for continuous improvement.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">🎮</div><div><div class="recog-title">38 Game Titles Scaled</div><div class="recog-desc">Platform expanded from pilot to serving 38 titles with 100 LoRA-trained models for 17 game titles.</div></div></div>
+      </div>
+    </div>
+
+    <!-- Learnings -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Reflections</div>
+      <h3>What I Learned</h3>
+      <div class="learn-grid">
+        <div class="learn-card"><span class="learn-num art">01</span><h4>Data beats opinions — always</h4><p>Establishing the discipline of defining success criteria before development changed how the team made decisions. When stakeholders disagreed, data became the tiebreaker.</p></div>
+        <div class="learn-card"><span class="learn-num art">02</span><h4>User research is not optional for AI products</h4><p>AI quality is subjective. Beta testing, prototype testing, and CSAT surveys were essential to understand what "good enough" meant for different user personas.</p></div>
+        <div class="learn-card"><span class="learn-num art">03</span><h4>Platform products require ecosystem thinking</h4><p>Scaling from 1 title to 38 required thinking about the platform as a service — consistent APIs, reusable models, and standardized workflows for diverse teams.</p></div>
+        <div class="learn-card"><span class="learn-num art">04</span><h4>Cross-functional alignment is the hardest skill</h4><p>Coordinating R&D, Engineering, QA, Creative, Marketing, and Game Designers required constant communication. The PM's value is in removing ambiguity.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASE STUDY 2: VGA -->
+<section id="vga" class="case-section">
+  <div class="container">
+
+    <div class="cs-banner vga fade-in">
+      <div class="cs-tag vga">⬡ VNGGames Account</div>
+      <h2>Login System & Account Management</h2>
+      <p>Game login, user information, and authentication services ensuring compliance with PDPL25, SOX requirements, and regulatory.</p>
+      <div class="cs-meta">
+        <div class="cs-meta-item"><span class="cs-meta-label">Role</span><span class="cs-meta-value">Product Management Executive</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Company</span><span class="cs-meta-value">VNG Group (VNGGames)</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Timeline</span><span class="cs-meta-value">Jun 2025 – Present</span></div>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <div class="cs-block fade-in">
+      <div class="block-label vga">Overview</div>
+      <h3>Platform Scope</h3>
+      <div class="grid-2">
+        <div>
+          <p>The <strong>Login System & Account Management</strong> platform is the backbone of the GPP (Game Publishing Platform) ecosystem. It handles game login, user authentication, user information management, and compliance with Vietnamese and international regulations.</p>
+          <p>As PM, I collaborate closely with stakeholders to translate product vision into clear specifications, user stories, and actionable deliverables. I ensure services comply with PDPL25, SOX, and relevant legal regulations while participating in UAT and coordinating releases.</p>
+        </div>
+        <div class="grid-2" style="align-content:start;">
+          <div class="stat-card"><span class="stat-num vga">40%</span><span class="stat-lbl">Cost savings (ZNS)</span></div>
+          <div class="stat-card"><span class="stat-num vga">66%</span><span class="stat-lbl">ZNS delivery success</span></div>
+          <div class="stat-card"><span class="stat-num vga">100%</span><span class="stat-lbl">Features w/ success criteria</span></div>
+          <div class="stat-card"><span class="stat-num vga">PDPL</span><span class="stat-lbl">Compliance for GPP</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Initiatives -->
+    <div class="cs-block fade-in">
+      <div class="block-label vga">Major Initiatives</div>
+      <h3>Key Projects & Achievements</h3>
+      <div class="timeline vga" style="margin-top:32px;">
+        <div class="tl-item"><div class="tl-dot">📝</div><div class="tl-phase vga">Initiative 01</div><h4>Zing Registration — User Onboarding</h4><p>Co-led delivery of the Zing Registration initiative — a critical component for platform stability and seamless user onboarding across the GPP ecosystem.</p><div class="tags"><span class="tag vga">Registration Flow</span><span class="tag vga">User Onboarding</span><span class="tag vga">Platform Stability</span></div></div>
+        <div class="tl-item"><div class="tl-dot">📱</div><div class="tl-phase vga">Initiative 02</div><h4>ZNS Implementation — 40% Cost Savings</h4><p>Implemented Zalo Notification Service (ZNS) alongside SMS, achieving 40% cost savings on notification services while maintaining a 66% ZNS delivery success rate. Balanced cost optimization with delivery reliability.</p><div class="tags"><span class="tag vga">ZNS</span><span class="tag vga">Cost Optimization</span><span class="tag vga">40% Savings</span><span class="tag vga">SMS Fallback</span></div></div>
+        <div class="tl-item"><div class="tl-dot">⚖️</div><div class="tl-phase vga">Initiative 03</div><h4>PDPL25 Compliance</h4><p>Published PDPL25 compliance standards for GPP. Delivered consent management features ensuring regulatory readiness across all game titles using the platform.</p><div class="tags"><span class="tag vga">PDPL25</span><span class="tag vga">Consent Management</span><span class="tag vga">Regulatory Compliance</span><span class="tag vga">Data Protection</span></div></div>
+        <div class="tl-item"><div class="tl-dot">🔐</div><div class="tl-phase vga">Initiative 04</div><h4>My Account 2.0</h4><p>Co-led delivery of My Account 2.0 — redesigning the user account management experience. Critical for platform stability and improved user self-service capabilities.</p><div class="tags"><span class="tag vga">MyAccount 2.0</span><span class="tag vga">UX Redesign</span><span class="tag vga">Self-Service</span><span class="tag vga">Account Security</span></div></div>
+      </div>
+    </div>
+
+    <!-- Strategy -->
+    <div class="cs-block fade-in">
+      <div class="block-label vga">Product Strategy</div>
+      <h3>Key Ownership Decisions</h3>
+      <div class="highlight-card">
+        <div class="hc-row"><span class="hc-badge vga">Compliance</span><div class="hc-text"><strong>Treated compliance as a product feature, not a constraint.</strong> Published PDPL25 standards for GPP and built consent management features that were seamless for users while meeting strict regulatory requirements.</div></div>
+        <div class="hc-row"><span class="hc-badge vga">Cost</span><div class="hc-text"><strong>Optimized notification costs by 40%</strong> by implementing ZNS alongside SMS — achieving cost savings without sacrificing delivery reliability (66% ZNS success with SMS fallback).</div></div>
+        <div class="hc-row"><span class="hc-badge vga">Quality</span><div class="hc-text"><strong>100% of features had success criteria before development</strong> — covering acceptance criteria, success rate, adoption rate, and usage metrics. This discipline ensured consistent quality across releases.</div></div>
+        <div class="hc-row"><span class="hc-badge vga">Process</span><div class="hc-text"><strong>Established transparent stakeholder communication</strong> — providing regular updates on progress, risks, and outcomes for timely alignment and decision-making across the organization.</div></div>
+      </div>
+    </div>
+
+    <!-- Outcomes -->
+    <div class="cs-block fade-in">
+      <div class="block-label vga">Outcomes</div>
+      <h3>Platform Impact</h3>
+      <div class="outcome-banner">
+        <h3>Login System powers every GPP game title</h3>
+        <p>Every player interaction — from first registration to ongoing authentication — runs through this platform. Shipping reliable identity infrastructure at this scale requires both regulatory expertise and strong product ownership.</p>
+      </div>
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="stat-card"><span class="stat-num vga">40%</span><span class="stat-lbl">Cost savings on notifications</span></div>
+        <div class="stat-card"><span class="stat-num vga">66%</span><span class="stat-lbl">ZNS delivery success rate</span></div>
+        <div class="stat-card"><span class="stat-num vga">100%</span><span class="stat-lbl">Features w/ success criteria</span></div>
+        <div class="stat-card"><span class="stat-num vga">PDPL</span><span class="stat-lbl">Compliance published for GPP</span></div>
+      </div>
+      <div class="recog-grid">
+        <div class="recog-card"><div class="recog-icon">📱</div><div><div class="recog-title">ZNS + SMS Dual Channel</div><div class="recog-desc">Successfully implemented ZNS alongside SMS, achieving 40% cost savings while ensuring message delivery through intelligent fallback.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">⚖️</div><div><div class="recog-title">PDPL25 Regulatory Readiness</div><div class="recog-desc">Published compliance standards and delivered consent management features ensuring full regulatory readiness across GPP.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">🔐</div><div><div class="recog-title">My Account 2.0 Shipped</div><div class="recog-desc">Co-led the redesign of the user account portal, improving platform stability and user self-service experience.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">📊</div><div><div class="recog-title">Success Criteria Discipline</div><div class="recog-desc">Established the practice of defining acceptance criteria, success rate, adoption rate, and usage metrics for 100% of features before development.</div></div></div>
+      </div>
+    </div>
+
+    <!-- Learnings -->
+    <div class="cs-block fade-in">
+      <div class="block-label vga">Reflections</div>
+      <h3>What I Learned</h3>
+      <div class="learn-grid">
+        <div class="learn-card"><span class="learn-num vga">01</span><h4>Compliance is a product opportunity</h4><p>PDPL25 could have been a blocker — instead it became a chance to improve user trust and reduce notification costs. How you frame regulation determines team energy.</p></div>
+        <div class="learn-card"><span class="learn-num vga">02</span><h4>Cost optimization needs product thinking</h4><p>The ZNS implementation wasn't just a tech migration — it required understanding user behavior, delivery reliability, and fallback strategy as product decisions.</p></div>
+        <div class="learn-card"><span class="learn-num vga">03</span><h4>Success criteria prevent scope creep</h4><p>Defining what "done" means before writing code aligned the entire team. It's harder to gold-plate when everyone agreed on the finish line upfront.</p></div>
+        <div class="learn-card"><span class="learn-num vga">04</span><h4>Platform PMs need stakeholder empathy</h4><p>Game teams depend on login infrastructure but often don't understand its constraints. Proactive communication on progress, risks, and outcomes builds trust.</p></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-name">Vu Thi Nhat Ha</div>
+    <div class="footer-role">Product Management Executive · VNG Group</div>
+    <div class="footer-btns">
+      <a href="tel:+84947631327">📱 0947 631 327</a>
+      <a href="mailto:vutnhatha@gmail.com">📨 vutnhatha@gmail.com</a>
+      <a href="https://www.linkedin.com/in/vutnhatha/" target="_blank">🌐 LinkedIn</a>
+    </div>
+    <div class="footer-copy">© 2025 Vu Thi Nhat Ha · Product Portfolio</div>
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Carousel scroll
+function scrollCarousel(id, dir) {
+  const el = document.getElementById(id);
+  const w = el.querySelector('img')?.offsetWidth + 12 || 300;
+  el.scrollBy({ left: dir * w * 2, behavior: 'smooth' });
+}
+
+// Drag to scroll carousels
+document.querySelectorAll('.carousel').forEach(carousel => {
+  let isDown = false, startX, scrollLeft;
+  carousel.addEventListener('mousedown', e => {
+    isDown = true; carousel.style.cursor = 'grabbing';
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
+  carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
+  carousel.addEventListener('mouseup', () => { isDown = false; carousel.style.cursor = 'grab'; });
+  carousel.addEventListener('mousemove', e => {
+    if (!isDown) return; e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    carousel.scrollLeft = scrollLeft - (x - startX) * 1.5;
+  });
+});
+
+// Smooth scroll nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
