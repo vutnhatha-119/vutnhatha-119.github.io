@@ -336,7 +336,7 @@ section { position: relative; }
 .outcome-banner p { font-size: 15px; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.7; font-weight: 300; }
 
 /* RECOGNITION */
-.recog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.recog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .recog-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius-sm); padding: 24px;
@@ -393,8 +393,8 @@ footer {
   nav { padding: 14px 20px; }
   .nav-links { display: none; }
   .container { padding: 0 20px; }
-  .project-grid, .grid-2, .recog-grid, .learn-grid { grid-template-columns: 1fr; }
-  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .project-grid, .grid-2, .learn-grid { grid-template-columns: 1fr; }
+  .grid-3, .recog-grid { grid-template-columns: 1fr 1fr; }
   .grid-4 { grid-template-columns: 1fr 1fr; }
   .cs-banner { padding: 36px 28px; }
   .cs-meta { gap: 20px; }
@@ -486,7 +486,7 @@ footer {
     <div class="cs-banner art fade-in">
       <div class="cs-tag art">✦ Artian — Generative AI Platform</div>
       <h2>Artian — Generative AI Platform</h2>
-      <p>A generative AI platform enabling image, video, voiceover, comic, cosplay, and campaign creation — serving ~40K users with ~95K requests, only 0.2% error rate, and scaling across 38 game titles.</p>
+      <p>A generative AI platform built on Stable Diffusion — enabling image, video, voiceover, comic, cosplay, and campaign creation. Powered by GreenNode GPU cloud infrastructure, Artian helps studios save 50–70% of production time and costs while tripling creative output efficiency across 38 game titles.</p>
       <div class="cs-meta">
         <div class="cs-meta-item"><span class="cs-meta-label">Company</span><span class="cs-meta-value">VNGGames</span></div>
         <div class="cs-meta-item"><span class="cs-meta-label">Timeline</span><span class="cs-meta-value">Jun 2023 – Jun 2025 (2 years)</span></div>
@@ -513,6 +513,78 @@ footer {
       <!-- Platform Screenshot -->
       <div style="margin-top:28px; border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);">
         <img src="images/artian-dashboard.jpg" alt="Artian Platform Dashboard" style="width:100%; display:block;">
+      </div>
+    </div>
+
+    <!-- Origin & Challenge -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">The Challenge</div>
+      <h3>Standing Out in a Crowded Market</h3>
+      <div class="grid-2">
+        <div>
+          <p>The biggest challenge was standing out in a crowded GenAI market filled with tools like MidJourney and Stable Diffusion WebUI. Building an internal GenAI product meant we had to deeply understand <strong>real user pain points</strong> inside game studios — not just build "another AI tool" but solve practical, daily production tasks with high usability.</p>
+          <p>After the initial MVP proved viability, I joined to <strong>own the full product lifecycle</strong> from Version 1 onward — translating business requirements into actionable specs, managing cross-functional teams, and driving the platform from early adoption to company-wide production tool.</p>
+        </div>
+        <div>
+          <p><strong>Key PM decisions:</strong></p>
+          <p>• Focused on solving specific studio workflows rather than building a generic AI tool</p>
+          <p>• Prioritized simplicity — most complex AI tools fail because users can't navigate them</p>
+          <p>• Targeted internal users first (marketers, designers, game studios) before external expansion</p>
+          <p>• Designed dual modes (Basic/Advanced) to serve both non-technical and power users</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Evolution -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Product Evolution</div>
+      <h3>MVP → Version 1 → Version 2</h3>
+      <div class="timeline art" style="margin-top:32px;">
+        <div class="tl-item">
+          <div class="tl-dot">🎯</div>
+          <div class="tl-phase art">Phase 1 — Version 1 (Build Trust)</div>
+          <h4>Help Users Learn GenAI</h4>
+          <p>Joined the team after MVP validation. Owned the product lifecycle for V1 — introduced Basic and Advanced modes for different user segments. Basic for users who want simple, fast results; Advanced for those who need full control. Added Prompt Helper to educate users on writing effective prompts. Organized internal AI image contests to drive adoption and show that anyone can create quality content.</p>
+          <div class="tags"><span class="tag art">Basic/Advanced Modes</span><span class="tag art">Prompt Helper</span><span class="tag art">User Education</span><span class="tag art">Internal Contests</span></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">⚡</div>
+          <div class="tl-phase art">Phase 2 — Version 2 (Scale Impact)</div>
+          <h4>From Learning Tool to Production Engine</h4>
+          <p>Once users were comfortable with GenAI, the strategy shifted: removed complex parameters, applied pre-set configurations behind the scenes, and built practical Templates based on real game studio workflows. Users could now generate production-ready assets in a few clicks instead of tweaking dozens of settings. Added a built-in rating system to continuously improve output quality.</p>
+          <div class="tags"><span class="tag art">Simplified UX</span><span class="tag art">Pre-set Configs</span><span class="tag art">Workflow Templates</span><span class="tag art">Rating System</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platform Capabilities -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Platform Capabilities</div>
+      <h3>What Artian Can Do</h3>
+      <div class="grid-3">
+        <div class="info-card"><div class="info-icon">🎨</div><h4>AI Image Generation</h4><p>Generate game characters, marketing visuals, and concept art using Stable Diffusion with custom LoRA models trained on game-specific assets.</p></div>
+        <div class="info-card"><div class="info-icon">🎬</div><h4>AI Video & Chill Video</h4><p>Transform static images into motion videos and trailers in minutes — replacing days of manual video production for marketing teams.</p></div>
+        <div class="info-card"><div class="info-icon">🎤</div><h4>AI Voiceover</h4><p>Generate voiceover content for game trailers and marketing campaigns, reducing dependency on external voice talent.</p></div>
+        <div class="info-card"><div class="info-icon">📚</div><h4>Comic & Sticker Generation</h4><p>Create comics and AI stickers from game characters — enabling rapid social media content and community engagement materials.</p></div>
+        <div class="info-card"><div class="info-icon">👤</div><h4>Cosplay & Avatar</h4><p>AI Avatar and Cosplay features for user-generated campaigns — the PUBG Mobile 7th anniversary campaign drove 40K+ participants.</p></div>
+        <div class="info-card"><div class="info-icon">🔧</div><h4>Remove BG, Upscale & Remix</h4><p>Production tools including background removal, image upscaling, and style remixing — streamlining the creative pipeline for non-technical users.</p></div>
+      </div>
+    </div>
+
+    <!-- Business Impact -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Business Impact</div>
+      <h3>Efficiency Gains for Studios</h3>
+      <div class="grid-4">
+        <div class="stat-card"><span class="stat-num art">50-70%</span><span class="stat-lbl">Production time & cost savings</span></div>
+        <div class="stat-card"><span class="stat-num art">3×</span><span class="stat-lbl">Work efficiency improvement</span></div>
+        <div class="stat-card"><span class="stat-num art">116</span><span class="stat-lbl">Game characters processed</span></div>
+        <div class="stat-card"><span class="stat-num art">72K</span><span class="stat-lbl">Images generated for studios</span></div>
+      </div>
+      <div class="highlight-card" style="margin-top:20px;">
+        <div class="hc-row"><span class="hc-badge art">Pilot</span><div class="hc-text"><strong>Metal Slug: Awakening</strong> — first game to use Artian AI for character creation. Generated localized character costumes across multiple markets, validating the platform for production use.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Copyright</span><div class="hc-text"><strong>All AI-generated assets are copyright-safe</strong> — trained exclusively on licensed game data and proprietary assets. No third-party data contamination, ensuring full IP compliance.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Localization</span><div class="hc-text"><strong>AI-powered market localization</strong> — characters can be quickly adapted with traditional costumes from different countries, enabling rapid expansion to new markets without manual redesign.</div></div>
       </div>
     </div>
 
@@ -584,6 +656,14 @@ footer {
           <div class="tags"><span class="tag art">AI Workflow</span><span class="tag art">Content Creation</span><span class="tag art">Marketing Enablement</span><span class="tag art">Creative Pipeline</span></div>
         </div>
 
+        <div class="tl-item">
+          <div class="tl-dot">⚡</div>
+          <div class="tl-phase art">Milestone 04</div>
+          <h4>Artian 2.0 — Faster, Smarter, More Accurate</h4>
+          <p>Led the launch of Artian 2.0 with significantly improved AI models — delivering more accurate and contextually relevant outputs. Reduced image concept creation time by 30%, illustrative model creation time by 50%, and enabled video trailer production in just minutes instead of days.</p>
+          <div class="tags"><span class="tag art">Artian 2.0</span><span class="tag art">30% Faster Ideation</span><span class="tag art">50% Faster Models</span><span class="tag art">Video in Minutes</span></div>
+        </div>
+
       </div>
     </div>
 
@@ -592,10 +672,11 @@ footer {
       <div class="block-label art">Product Strategy</div>
       <h3>Key Decisions & Approach</h3>
       <div class="highlight-card">
-        <div class="hc-row"><span class="hc-badge art">Data</span><div class="hc-text"><strong>Established data-driven decision framework.</strong> Every feature required defined success criteria before development — covering acceptance criteria, success rate, adoption rate, and usage metrics. This raised decision quality above 85% KPI target.</div></div>
+        <div class="hc-row"><span class="hc-badge art">V2 UX</span><div class="hc-text"><strong>Simplified complex parameters for mass adoption.</strong> V1 showed all AI settings to prove depth; V2 hid complexity behind pre-set configs. Users went from tweaking 20+ parameters to generating production-ready assets in 3 clicks — without losing quality.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Templates</span><div class="hc-text"><strong>Built workflow-specific templates based on real studio needs.</strong> Instead of generic "text-to-image", created templates for Change Background, Change Skin, AI Sticker, Item Generation — tasks studios do daily. This shifted Artian from an experiment to a production tool.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Data</span><div class="hc-text"><strong>Established data-driven decision framework.</strong> Every feature required defined success criteria before development — covering acceptance criteria, success rate, adoption rate, and usage metrics. Added in-app rating system to feed user feedback directly into model improvement.</div></div>
         <div class="hc-row"><span class="hc-badge art">Scale</span><div class="hc-text"><strong>Scaled platform to 38 game titles</strong> with 100 LoRA-trained models for 17 titles — enabling game-specific AI generation at scale while maintaining 0.2% error rate.</div></div>
-        <div class="hc-row"><span class="hc-badge art">Research</span><div class="hc-text"><strong>Embedded user research into every release cycle.</strong> Beta testing, prototype testing, and quality evaluation for every feature. CSAT results: AI Generation 3.45/5 quality rate, Campaign 4.67/5 overall satisfaction.</div></div>
-        <div class="hc-row"><span class="hc-badge art">Process</span><div class="hc-text"><strong>Proposed process and product improvements</strong> based on user feedback and data analysis. Continuously iterated on both product features and team workflows.</div></div>
+        <div class="hc-row"><span class="hc-badge art">Adoption</span><div class="hc-text"><strong>Drove adoption through campaigns and contests.</strong> Organized internal AI image contests, launched AI Avatar campaign that went viral across the company, and created mini app demos to showcase capabilities to game studios.</div></div>
       </div>
     </div>
 
@@ -604,8 +685,8 @@ footer {
       <div class="block-label art">Outcomes</div>
       <h3>Measurable Impact</h3>
       <div class="outcome-banner">
-        <h3>Artian became flagship AI for marketers and designers</h3>
-        <p>A multi-capability generative AI platform serving the entire game publishing pipeline — from marketing campaigns to in-game character design.</p>
+        <h3>Artian became VNGGames' flagship AI initiative</h3>
+        <p>A platform serving 38 game titles — featured in VNG's development journey and contributing to the Globee Award as "AI Enterprise of the Year". Two years of continuous iteration, growing from V1 to production engine powering the entire game publishing pipeline.</p>
       </div>
       <div class="grid-4" style="margin-bottom:20px;">
         <div class="stat-card"><span class="stat-num art">95.5%</span><span class="stat-lbl">Success rate</span></div>
@@ -614,10 +695,32 @@ footer {
         <div class="stat-card"><span class="stat-num art">100</span><span class="stat-lbl">LoRA models trained</span></div>
       </div>
       <div class="recog-grid">
-        <div class="recog-card"><div class="recog-icon">📊</div><div><div class="recog-title">80% Data-Backed Decisions</div><div class="recog-desc">Exceeded the 85% KPI target for data-driven product decisions — using user behavior, error rates, and operational metrics.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">🏆</div><div><div class="recog-title">Globee Award — AI Enterprise of the Year</div><div class="recog-desc">Artian contributed to VNG being recognized by Globee Awards. The Stable Diffusion model integrated on Artian reduced 50–70% of design workload across studios.</div></div></div>
         <div class="recog-card"><div class="recog-icon">🎯</div><div><div class="recog-title">9 AI Campaigns Delivered</div><div class="recog-desc">~95K requests, ~40K users. 12K/18K internal jobs completed (~67% completion rate).</div></div></div>
         <div class="recog-card"><div class="recog-icon">⭐</div><div><div class="recog-title">CSAT 4/5 – 4.67/5</div><div class="recog-desc">Campaign satisfaction reached 4.67/5. AI generation quality rate at 3.45/5 — identified as area for continuous improvement.</div></div></div>
         <div class="recog-card"><div class="recog-icon">🎮</div><div><div class="recog-title">38 Game Titles Scaled</div><div class="recog-desc">Platform expanded from pilot to serving 38 titles with 100 LoRA-trained models for 17 game titles.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">📊</div><div><div class="recog-title">80% Data-Backed Decisions</div><div class="recog-desc">Exceeded the 85% KPI target for data-driven product decisions — using user behavior, error rates, and operational metrics.</div></div></div>
+        <div class="recog-card"><div class="recog-icon">🤝</div><div><div class="recog-title">GreenNode × Nvidia Partnership</div><div class="recog-desc">Artian powered by GreenNode's GPU cloud (Nvidia Cloud Provider) — enabling enterprise-grade AI inference at scale across Asia Pacific.</div></div></div>
+      </div>
+    </div>
+
+    <!-- Press & Recognition -->
+    <div class="cs-block fade-in">
+      <div class="block-label art">Press & Recognition</div>
+      <h3>Featured In</h3>
+      <div class="grid-2" style="gap:16px;">
+        <a href="https://vng.com.vn/news/technology/vnggames-ket-hop-cong-nghe-va-nghe-thuat-trong-ky-nguyen-ai-4064.html" target="_blank" style="text-decoration:none; color:inherit;">
+          <div class="info-card" style="height:100%;"><div class="info-icon">📰</div><h4>VNGGames kết hợp công nghệ và nghệ thuật trong kỷ nguyên AI</h4><p>VNG.com.vn — Feb 2024. Coverage of Artian's integration with Metal Slug: Awakening and 50-70% production cost savings across game studios.</p></div>
+        </a>
+        <a href="https://www.vietnam.vn/en/tin-tuc-doanh-nghiep-nhin-lai-vnggames-2024" target="_blank" style="text-decoration:none; color:inherit;">
+          <div class="info-card" style="height:100%;"><div class="info-icon">📰</div><h4>VNGGames' Milestones in 2024</h4><p>Vietnam.vn — Dec 2024. Artian 2.0 launch featured as key milestone — 30% faster ideation, 50% faster model creation, video trailers in minutes.</p></div>
+        </a>
+        <a href="https://www.vietnam.vn/en/vng-duoc-globee-awards-vinh-danh-la-doanh-nghiep-tri-tue-nhan-tao-cua-nam" target="_blank" style="text-decoration:none; color:inherit;">
+          <div class="info-card" style="height:100%;"><div class="info-icon">🏆</div><h4>VNG honored as "AI Enterprise of the Year" — Globee Awards 2025</h4><p>Vietnam.vn — May 2025. Artian's Stable Diffusion integration cited as key contribution. VNG became the only Vietnam & SEA enterprise honored.</p></div>
+        </a>
+        <a href="https://www.vietnam.vn/en/vng-va-hanh-trinh-20-nam-tien-phong-nganh-game" target="_blank" style="text-decoration:none; color:inherit;">
+          <div class="info-card" style="height:100%;"><div class="info-icon">📰</div><h4>VNG and its 20-year journey as a pioneer in the gaming industry</h4><p>Vietnam.vn — May 2025. Artian highlighted as key AI initiative — saving 50-70% production time while tripling work efficiency across studios.</p></div>
+        </a>
       </div>
     </div>
 
@@ -626,10 +729,10 @@ footer {
       <div class="block-label art">Reflections</div>
       <h3>What I Learned</h3>
       <div class="learn-grid">
-        <div class="learn-card"><span class="learn-num art">01</span><h4>Data beats opinions — always</h4><p>Establishing the discipline of defining success criteria before development changed how the team made decisions. When stakeholders disagreed, data became the tiebreaker.</p></div>
-        <div class="learn-card"><span class="learn-num art">02</span><h4>User research is not optional for AI products</h4><p>AI quality is subjective. Beta testing, prototype testing, and CSAT surveys were essential to understand what "good enough" meant for different user personas.</p></div>
-        <div class="learn-card"><span class="learn-num art">03</span><h4>Platform products require ecosystem thinking</h4><p>Scaling from 1 title to 38 required thinking about the platform as a service — consistent APIs, reusable models, and standardized workflows for diverse teams.</p></div>
-        <div class="learn-card"><span class="learn-num art">04</span><h4>Cross-functional alignment is the hardest skill</h4><p>Coordinating R&D, Engineering, QA, Creative, Marketing, and Game Designers required constant communication. The PM's value is in removing ambiguity.</p></div>
+        <div class="learn-card"><span class="learn-num art">01</span><h4>Solve real workflows, not generic problems</h4><p>The GenAI market is crowded with tools that do everything. Artian won internal adoption by focusing on specific studio tasks — Change Background, AI Sticker, Item Generation — not by being "another MidJourney". Specificity beats generality for enterprise products.</p></div>
+        <div class="learn-card"><span class="learn-num art">02</span><h4>Simplicity is the real product challenge</h4><p>V1 showed all parameters to prove depth. V2 hid them to prove maturity. The hardest PM decision was removing features users "could" use so they'd actually use what matters. Adoption jumped when we stopped treating users like AI engineers.</p></div>
+        <div class="learn-card"><span class="learn-num art">03</span><h4>Platform products require ecosystem thinking</h4><p>Scaling from 1 title to 38 required thinking about the platform as a service — consistent APIs, reusable LoRA models, and workflow templates that different studios could customize without engineering support.</p></div>
+        <div class="learn-card"><span class="learn-num art">04</span><h4>Adoption is a product, not a launch</h4><p>Features don't drive adoption — campaigns do. AI image contests, AI Avatar viral campaigns, and mini app demos converted skeptics into daily users. We treated internal adoption with the same rigor as external user acquisition.</p></div>
       </div>
     </div>
 

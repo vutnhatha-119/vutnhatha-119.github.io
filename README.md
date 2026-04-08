@@ -4,8 +4,11 @@ Personal product portfolio showcasing work as Product Management Executive at VN
 
 ## Projects
 
-- **Artian** — Generative AI platform for image, video, voiceover, comic, cosplay & campaign creation. Served ~40K users, 95.5% success rate, scaled across 38 game titles.
-- **VNGGames Account** — Login system & account management platform powering the GPP ecosystem. Achieved 40% cost savings via ZNS, PDPL25 compliance shipped.
+### Artian — Generative AI Platform
+Built from 4 founding members to a platform serving 38 game titles. MVP in 30 days → V1 (user education) → V2 (production engine). Reduced 50–70% design workload, tripled productivity, generated 72K+ images for 116 in-game characters. Featured in VNG's development journey and Globee Awards.
+
+### VNGGames Account — Login System & Account Management
+Login, authentication, and compliance platform powering the GPP ecosystem. Achieved 40% cost savings via ZNS, shipped PDPL25 compliance, launched My Account 2.0.
 
 ## Live
 
